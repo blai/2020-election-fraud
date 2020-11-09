@@ -24,3 +24,8 @@ data
 └── pa
 
 ```
+
+#### Database schema
+
+*Database* election
+*Table* pa_voters
