@@ -11,3 +11,12 @@ cd 2020-election-frand
 # ./reset-data
 ./load-data
 ```
+
+#### Expected `data` folder
+```
+# ❯ tree data -L 1
+
+data
+└── pa
+
+```
