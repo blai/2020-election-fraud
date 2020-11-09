@@ -1,6 +1,7 @@
 # 2020-election-fraud
 
 1. download pa voting data and unzip into ./data/pa
+2. rename all *.txt in ./data/pa to replace ` ` (whitespace) to `_`
 2. make sure mysql is install and have root user without password (for local ONLY!)
 3. run `./load-data`
 
