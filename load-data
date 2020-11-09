@@ -1,0 +1,337 @@
+#!/bin/bash
+
+# echo 'drop database election;' | mysql
+
+cp -R ~/Downloads/Statewide /tmp
+
+echo '
+CREATE TABLE IF NOT EXISTS pa_voters (
+    `id` VARCHAR(100) PRIMARY KEY,
+    `title` VARCHAR(100),
+    `last_name` VARCHAR(255),
+    `first_name` VARCHAR(255),
+    `middle_name` VARCHAR(255),
+    `suffix` VARCHAR(100),
+    `gender` VARCHAR(10),
+    `dob` DATE,
+    `registration_date` DATE,
+    `voter_status` VARCHAR(10),
+    `status_change_date` DATE,
+    `party_code` VARCHAR(10),
+    `house_number` VARCHAR(100),
+    `house_number_suffix` VARCHAR(100),
+    `street_name` VARCHAR(255),
+    `apt_number` VARCHAR(100),
+    `address_line2` VARCHAR(255),
+    `city` VARCHAR(255),
+    `state` VARCHAR(10),
+    `zip` VARCHAR(20),
+    `mail_address1` VARCHAR(255),
+    `mail_address2` VARCHAR(255),
+    `mail_city` VARCHAR(255),
+    `mail_state` VARCHAR(10),
+    `mail_zip` VARCHAR(20),
+    `last_vote_date` DATE,
+    `precinct_code` VARCHAR(100),
+    `precinct_split_id` VARCHAR(100),
+    `date_last_changed` DATE,
+    `custom_data1` VARCHAR(255),
+    `district1` VARCHAR(255),
+
+    `custom_data2` VARCHAR(30),
+    `custom_data3` VARCHAR(30),
+    `custom_data4` VARCHAR(30),
+    `custom_data5` VARCHAR(30),
+    `custom_data6` VARCHAR(30),
+    `custom_data7` VARCHAR(30),
+    `custom_data8` VARCHAR(30),
+    `custom_data9` VARCHAR(30),
+    `custom_data10` VARCHAR(30),
+    `custom_data11` VARCHAR(30),
+    `custom_data12` VARCHAR(30),
+    `custom_data13` VARCHAR(30),
+    `custom_data14` VARCHAR(30),
+    `custom_data15` VARCHAR(30),
+    `custom_data16` VARCHAR(30),
+    `custom_data17` VARCHAR(30),
+    `custom_data18` VARCHAR(30),
+    `custom_data19` VARCHAR(30),
+    `custom_data20` VARCHAR(30),
+    `custom_data21` VARCHAR(30),
+    `custom_data22` VARCHAR(30),
+    `custom_data23` VARCHAR(30),
+    `custom_data24` VARCHAR(30),
+    `custom_data25` VARCHAR(30),
+    `custom_data26` VARCHAR(30),
+    `custom_data27` VARCHAR(30),
+    `custom_data28` VARCHAR(30),
+    `custom_data29` VARCHAR(30),
+    `custom_data30` VARCHAR(30),
+    `custom_data31` VARCHAR(30),
+    `custom_data32` VARCHAR(30),
+    `custom_data33` VARCHAR(30),
+    `custom_data34` VARCHAR(30),
+    `custom_data35` VARCHAR(30),
+    `custom_data36` VARCHAR(30),
+    `custom_data37` VARCHAR(30),
+    `custom_data38` VARCHAR(30),
+    `custom_data39` VARCHAR(30),
+    `custom_data40` VARCHAR(30),
+    `custom_data41` VARCHAR(30),
+    `custom_data42` VARCHAR(30),
+    `custom_data43` VARCHAR(30),
+    `custom_data44` VARCHAR(30),
+    `custom_data45` VARCHAR(30),
+    `custom_data46` VARCHAR(30),
+    `custom_data47` VARCHAR(30),
+    `custom_data48` VARCHAR(30),
+    `custom_data49` VARCHAR(30),
+    `custom_data50` VARCHAR(30),
+    `custom_data51` VARCHAR(30),
+    `custom_data52` VARCHAR(30),
+    `custom_data53` VARCHAR(30),
+    `custom_data54` VARCHAR(30),
+    `custom_data55` VARCHAR(30),
+    `custom_data56` VARCHAR(30),
+    `custom_data57` VARCHAR(30),
+    `custom_data58` VARCHAR(30),
+    `custom_data59` VARCHAR(30),
+    `custom_data60` VARCHAR(30),
+    `custom_data61` VARCHAR(30),
+    `custom_data62` VARCHAR(30),
+    `custom_data63` VARCHAR(30),
+    `custom_data64` VARCHAR(30),
+    `custom_data65` VARCHAR(30),
+    `custom_data66` VARCHAR(30),
+    `custom_data67` VARCHAR(30),
+    `custom_data68` VARCHAR(30),
+    `custom_data69` VARCHAR(30),
+    `custom_data70` VARCHAR(30),
+    `custom_data71` VARCHAR(30),
+    `custom_data72` VARCHAR(30),
+    `custom_data73` VARCHAR(30),
+    `custom_data74` VARCHAR(30),
+    `custom_data75` VARCHAR(30),
+    `custom_data76` VARCHAR(30),
+    `custom_data77` VARCHAR(30),
+    `custom_data78` VARCHAR(30),
+    `custom_data79` VARCHAR(30),
+    `custom_data80` VARCHAR(30),
+    `custom_data81` VARCHAR(30),
+    `custom_data82` VARCHAR(30),
+    `custom_data83` VARCHAR(30),
+    `custom_data84` VARCHAR(30),
+    `custom_data85` VARCHAR(30),
+    `custom_data86` VARCHAR(30),
+    `custom_data87` VARCHAR(30),
+    `custom_data88` VARCHAR(30),
+    `custom_data89` VARCHAR(30),
+    `custom_data90` VARCHAR(30),
+    `custom_data91` VARCHAR(30),
+    `custom_data92` VARCHAR(30),
+    `custom_data93` VARCHAR(30),
+    `custom_data94` VARCHAR(30),
+    `custom_data95` VARCHAR(30),
+    `custom_data96` VARCHAR(30),
+    `custom_data97` VARCHAR(30),
+    `custom_data98` VARCHAR(30),
+    `custom_data99` VARCHAR(30),
+    `custom_data100` VARCHAR(30),
+    `custom_data101` VARCHAR(30),
+    `custom_data102` VARCHAR(30),
+    `custom_data103` VARCHAR(30),
+    `custom_data104` VARCHAR(30),
+    `custom_data105` VARCHAR(30),
+    `custom_data106` VARCHAR(30),
+    `custom_data107` VARCHAR(30),
+    `custom_data108` VARCHAR(30),
+    `custom_data109` VARCHAR(30),
+    `custom_data110` VARCHAR(30),
+    `custom_data111` VARCHAR(30),
+    `custom_data112` VARCHAR(30),
+    `custom_data113` VARCHAR(30),
+    `custom_data114` VARCHAR(30),
+    `custom_data115` VARCHAR(30),
+    `custom_data116` VARCHAR(30),
+    `custom_data117` VARCHAR(30),
+    `custom_data118` VARCHAR(30),
+    `custom_data119` VARCHAR(30),
+    `custom_data120` VARCHAR(30),
+    `custom_data121` VARCHAR(30),
+    `custom_data122` VARCHAR(30),
+    `custom_data123` VARCHAR(30),
+    `county` VARCHAR(100),
+
+    INDEX idx_gender (gender),
+    INDEX idx_dob (dob),
+    INDEX idx_registration_date (registration_date),
+    INDEX idx_voter_status (voter_status),
+    INDEX idx_status_change_date (status_change_date),
+    INDEX idx_party_code (party_code),
+    INDEX idx_city (city),
+    INDEX idx_state (state),
+    INDEX idx_zip (zip),
+    INDEX idx_mail_city (mail_city),
+    INDEX idx_mail_state (mail_state),
+    INDEX idx_mail_zip (mail_zip),
+    INDEX idx_last_vote_date (last_vote_date),
+    INDEX idx_date_last_changed (date_last_changed),
+    INDEX idx_district1 (district1),
+    INDEX idx_county (county)
+
+);' > ./pa_voters.sql;
+
+cat > loader.awk << LOADER
+#!/Users/brilai/homebrew/bin/awk -f
+{
+split(\$0,a,"_")
+print "load data infile '/tmp/Statewide/" \$0 "' into table pa_voters"
+print "lines terminated by '\n'"
+print "("
+print "    id, title, last_name,"
+print "    first_name, middle_name,"
+print "    suffix, gender, @dob,"
+print "    @registration_date, voter_status,"
+print "    @status_change_date, party_code,"
+print "    house_number, house_number_suffix,"
+print "    street_name, apt_number,"
+print "    address_line2, city, state,"
+print "    zip, mail_address1, mail_address2,"
+print "    mail_city, mail_state, mail_zip,"
+print "    @last_vote_date, precinct_code,"
+print "    precinct_split_id, @date_last_changed,"
+print "    custom_data1, district1, custom_data2,"
+print "    custom_data3,"
+print "    custom_data4,"
+print "    custom_data5,"
+print "    custom_data6,"
+print "    custom_data7,"
+print "    custom_data8,"
+print "    custom_data9,"
+print "    custom_data10,"
+print "    custom_data11,"
+print "    custom_data12,"
+print "    custom_data13,"
+print "    custom_data14,"
+print "    custom_data15,"
+print "    custom_data16,"
+print "    custom_data17,"
+print "    custom_data18,"
+print "    custom_data19,"
+print "    custom_data20,"
+print "    custom_data21,"
+print "    custom_data22,"
+print "    custom_data23,"
+print "    custom_data24,"
+print "    custom_data25,"
+print "    custom_data26,"
+print "    custom_data27,"
+print "    custom_data28,"
+print "    custom_data29,"
+print "    custom_data30,"
+print "    custom_data31,"
+print "    custom_data32,"
+print "    custom_data33,"
+print "    custom_data34,"
+print "    custom_data35,"
+print "    custom_data36,"
+print "    custom_data37,"
+print "    custom_data38,"
+print "    custom_data39,"
+print "    custom_data40,"
+print "    custom_data41,"
+print "    custom_data42,"
+print "    custom_data43,"
+print "    custom_data44,"
+print "    custom_data45,"
+print "    custom_data46,"
+print "    custom_data47,"
+print "    custom_data48,"
+print "    custom_data49,"
+print "    custom_data50,"
+print "    custom_data51,"
+print "    custom_data52,"
+print "    custom_data53,"
+print "    custom_data54,"
+print "    custom_data55,"
+print "    custom_data56,"
+print "    custom_data57,"
+print "    custom_data58,"
+print "    custom_data59,"
+print "    custom_data60,"
+print "    custom_data61,"
+print "    custom_data62,"
+print "    custom_data63,"
+print "    custom_data64,"
+print "    custom_data65,"
+print "    custom_data66,"
+print "    custom_data67,"
+print "    custom_data68,"
+print "    custom_data69,"
+print "    custom_data70,"
+print "    custom_data71,"
+print "    custom_data72,"
+print "    custom_data73,"
+print "    custom_data74,"
+print "    custom_data75,"
+print "    custom_data76,"
+print "    custom_data77,"
+print "    custom_data78,"
+print "    custom_data79,"
+print "    custom_data80,"
+print "    custom_data81,"
+print "    custom_data82,"
+print "    custom_data83,"
+print "    custom_data84,"
+print "    custom_data85,"
+print "    custom_data86,"
+print "    custom_data87,"
+print "    custom_data88,"
+print "    custom_data89,"
+print "    custom_data90,"
+print "    custom_data91,"
+print "    custom_data92,"
+print "    custom_data93,"
+print "    custom_data94,"
+print "    custom_data95,"
+print "    custom_data96,"
+print "    custom_data97,"
+print "    custom_data98,"
+print "    custom_data99,"
+print "    custom_data100,"
+print "    custom_data101,"
+print "    custom_data102,"
+print "    custom_data103,"
+print "    custom_data104,"
+print "    custom_data105,"
+print "    custom_data106,"
+print "    custom_data107,"
+print "    custom_data108,"
+print "    custom_data109,"
+print "    custom_data110,"
+print "    custom_data111,"
+print "    custom_data112,"
+print "    custom_data113,"
+print "    custom_data114,"
+print "    custom_data115,"
+print "    custom_data116,"
+print "    custom_data117,"
+print "    custom_data118,"
+print "    custom_data119,"
+print "    custom_data120,"
+print "    custom_data121,"
+print "    custom_data122,"
+print "    custom_data123"
+print ")"
+print "SET dob = CASE WHEN @dob !='' THEN STR_TO_DATE(@dob, '%m/%d/%Y') ELSE NULL END"
+print ", registration_date = CASE WHEN @registration_date !='' THEN STR_TO_DATE(@registration_date, '%m/%d/%Y') ELSE NULL END"
+print ", status_change_date = CASE WHEN @status_change_date !='' THEN STR_TO_DATE(@status_change_date, '%m/%d/%Y') ELSE NULL END"
+print ", last_vote_date = CASE WHEN @last_vote_date !='' THEN STR_TO_DATE(@last_vote_date, '%m/%d/%Y') ELSE NULL END"
+print ", date_last_changed = CASE WHEN @date_last_changed !='' THEN STR_TO_DATE(@date_last_changed, '%m/%d/%Y') ELSE NULL END"
+print ", county = '" a[1] "';"
+}
+LOADER
+
+echo 'create database election;' | mysql;
+cat ./pa_voters.sql | mysql election;
+ls /tmp/Statewide | grep FVE | ./loader.awk | mysql election
