@@ -12,6 +12,10 @@ cd 2020-election-frand
 ./load-data
 ```
 
+#### WARNING
+
+For query performance, many indexies were added, check `load-data` for detail. This will make importing data slow, if you prefer to trade faster data import for slower queries, remove the index in `load-data` script.
+
 #### Expected `data` folder
 ```
 # ❯ tree data -L 1
