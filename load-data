@@ -2,7 +2,7 @@
 
 # echo 'drop database election;' | mysql
 
-cp -R ~/Downloads/Statewide /tmp
+cp -R ./data /tmp
 
 echo '
 CREATE TABLE IF NOT EXISTS pa_voters (
@@ -334,4 +334,4 @@ LOADER
 
 echo 'create database election;' | mysql;
 cat ./pa_voters.sql | mysql election;
-ls /tmp/Statewide | grep FVE | ./loader.awk | mysql election
+ls /tmp/data/pa | grep FVE | ./loader.awk | mysql election
